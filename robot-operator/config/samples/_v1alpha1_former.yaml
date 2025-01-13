@@ -1,0 +1,20 @@
+apiVersion: lge.com/v1alpha1
+kind: Former
+metadata:
+  labels:
+    app.kubernetes.io/name: former-0047
+    app.kubernetes.io/instance: former-0047
+    app.kubernetes.io/part-of: robot-operator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: robot-operator
+  name: former-0047
+  namespace: lge-ebme
+spec:
+  robotName: "former_0047"
+  rosDomainId: "4"
+  network: "ebme-network"
+  image: "lgecloudroboticstask/former_docker:20240229"
+  args: ". /opt/ros/humble/setup.bash && . /root/dev_ws/install/setup.bash && ros2 launch former_bringup bringup_robot.launch.py"
+  hostNetwork: false
+  nodeSelector:
+    kubernetes.io/hostname: "former-0047"

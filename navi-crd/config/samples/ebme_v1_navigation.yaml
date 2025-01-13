@@ -1,0 +1,29 @@
+apiVersion: ebme.lge.com/v1
+kind: Navigation
+metadata:
+  labels:
+    app.kubernetes.io/name: navigation
+    app.kubernetes.io/instance: navigation-sample
+    app.kubernetes.io/part-of: navi-crd
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: navi-crd
+  name: navigation-sample
+  namespace: lge-ebme
+spec:
+  network: "ebme-network"
+  robotName: cloi_31585
+  rosDomainId: "72"
+  image: "lgecloudroboticstask/nav2_humble:20230831"
+  command: ["/bin/bash", "-c"]
+  args:
+    [
+      ". /opt/ros/humble/setup.bash; . /opt/cloi_ws/install/setup.bash; ros2 launch nav2_bringup navigation_launch.py",
+    ]
+  initialPose:
+    position:
+      "x": "33.1"
+      "y": "22.2"
+      "z": "11.3"
+    orientation:
+      "w": "22.4"
+  nodeSelector: "cloud-nuc11phi7"

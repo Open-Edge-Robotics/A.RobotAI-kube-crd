@@ -1,0 +1,133 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: manager-role
+rules:
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - services
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - lge.com
+  resources:
+  - formers
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - lge.com
+  resources:
+  - formers/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - lge.com
+  resources:
+  - formers/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - lge.com
+  resources:
+  - navis
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - lge.com
+  resources:
+  - navis/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - lge.com
+  resources:
+  - navis/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - lge.com
+  resources:
+  - roskubes
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - lge.com
+  resources:
+  - roskubes/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - lge.com
+  resources:
+  - roskubes/status
+  verbs:
+  - get
+  - patch
+  - update

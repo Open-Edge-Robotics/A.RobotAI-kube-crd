@@ -14,3 +14,17 @@ Kubernetes custom resource definition to deploy the specific robot engines and a
 - 엣지와 클라우드 분산 협업을 위한 지속적 지능 배포 프레임워크 
 - 자율행동체 엣지 기반 클러스터링 솔루션 및 분산 학습 프레임워크 개발
 ```
+
+---
+
+# Robot Operator
+
+쿠버네티스에서 로봇 운영을 위한 로봇 CRD와 컨트롤러 구현 프로젝트 입니다.
+
+## Operator List
+
+| Operator | Description | etc |
+| --- | --- | --- |
+|[Cloud Bridge Operator](./cloud-bridge-crd) | 클라우드 브릿지를 위한 CRD와 컨트롤러 구현 | [README](./cloud-bridge-crd/README.md) |
+|[Navigation Operator](./navi-crd) | 네비게이션을 위한 CRD와 컨트롤러 구현 | [README](./navi-crd/README.md) |
+|[Robot Operator](./robot-operator) | 로봇 운영을 위한 로봇 CRD와 컨트롤러 구현 | [README](./robot-operator/README.md) |

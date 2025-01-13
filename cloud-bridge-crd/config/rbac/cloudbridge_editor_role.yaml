@@ -1,0 +1,31 @@
+# permissions for end users to edit cloudbridges.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: cloudbridge-editor-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: cloud-bridge-crd
+    app.kubernetes.io/part-of: cloud-bridge-crd
+    app.kubernetes.io/managed-by: kustomize
+  name: cloudbridge-editor-role
+rules:
+- apiGroups:
+  - ebme.lge.com
+  resources:
+  - cloudbridges
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ebme.lge.com
+  resources:
+  - cloudbridges/status
+  verbs:
+  - get

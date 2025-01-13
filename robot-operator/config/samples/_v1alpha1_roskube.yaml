@@ -1,0 +1,17 @@
+apiVersion: lge.com/v1alpha1
+kind: RosKube
+metadata:
+  labels:
+    app: former-0047-roskube
+  name: former-0047-roskube
+  namespace: lge-ebme
+spec:
+  naviName: "former-0047-navi-configmap"
+  rosDomainId: "4"
+  network: "ebme-network"
+  image: "lgecloudroboticstask/ros-kube:latest"
+  paramPath: "/home/former/workspace/nav2/params"
+  amclPose: "/amcl_pose"
+  hostNetwork: false
+  nodeSelector:
+    kubernetes.io/hostname: "former-0047"

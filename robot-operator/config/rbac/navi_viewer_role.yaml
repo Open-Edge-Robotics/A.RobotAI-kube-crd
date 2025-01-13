@@ -1,0 +1,27 @@
+# permissions for end users to view navis.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: navi-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: robot-operator
+    app.kubernetes.io/part-of: robot-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: navi-viewer-role
+rules:
+- apiGroups:
+  - lge.com
+  resources:
+  - navis
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - lge.com
+  resources:
+  - navis/status
+  verbs:
+  - get

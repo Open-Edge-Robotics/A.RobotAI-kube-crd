@@ -1,0 +1,24 @@
+apiVersion: ebme.lge.com/v1
+kind: CloudBridge
+metadata:
+  labels:
+    app.kubernetes.io/name: cloudbridge
+    app.kubernetes.io/instance: cloud-bridge-former2-4
+    app.kubernetes.io/part-of: cloud-bridge-crd
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: cloud-bridge-crd
+  name: cloud-bridge-former2-4
+  namespace: lge-ebme
+spec:
+  network: "ebme-network"
+  robotName: "former2_4"
+  rosDomainId: "72"
+  image: "lgecloudroboticstask/cloud_bridge:humble-20230721"
+  port: 31695
+  configDir: ""
+  command: ["/bin/bash", "-c"]
+  args:
+    - . /opt/ros/humble/setup.bash; . /home/ubuntu/cloud_bridge/install/setup.bash;
+      sed 's/microk8s_chatter/chatter2/g' /home/ubuntu/publisher.py > /home/ubuntu/cloud_bridge/publisher.py;
+      ros2 launch cloud_bridge cloud_bridge_server.launch.py & python3 /home/ubuntu/cloud_bridge/publisher.py talker; 
+  nodeSelector: "cloud-nuc11phi7"

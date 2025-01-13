@@ -1,0 +1,22 @@
+apiVersion: lge.com/v1alpha1
+kind: Navi
+metadata:
+  labels:
+    app.kubernetes.io/name: former-0047-navi
+    app.kubernetes.io/instance: former-0047-navi
+    app.kubernetes.io/part-of: robot-operator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: robot-operator
+  name: former-0047-navi
+  namespace: lge-ebme
+spec:
+  rosDomainId: "4"
+  network: "ebme-network"
+  image: "lgecloudroboticstask/navi:nav2-version2"
+  args: ". /opt/ros/humble/setup.bash && ros2 launch nav2_bringup bringup_launch.py map:=/root/workspace/nav2/maps/seocho_test_19.yaml params_file:=/root/workspace/nav2/params/nav2_params.yaml"
+  paramPath: "/home/former/workspace/nav2/params"
+  mapPath: "/home/former/workspace/nav2/maps"
+  rvizPath: "/home/former/workspace/nav2/rviz"
+  hostNetwork: false
+  nodeSelector:
+    kubernetes.io/hostname: "former-0047"

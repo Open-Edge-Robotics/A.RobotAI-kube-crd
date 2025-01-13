@@ -1,0 +1,24 @@
+apiVersion: ebme.lge.com/v1
+kind: CloudBridge
+metadata:
+  labels:
+    app.kubernetes.io/name: cloudbridge
+    app.kubernetes.io/instance: cloudbridge-client-32695
+    app.kubernetes.io/part-of: cloud-bridge-crd
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: cloud-bridge-crd
+  name: cloudbridge-client-32695
+  namespace: lge-ebme
+spec:
+  network: "ebme-network"
+  robotName: "former2_4"
+  rosDomainId: "24"
+  image: "lgecloudroboticstask/cloud_bridge:humble-offloading-20230508"
+  port: 32695
+  configDir: "/home/ubuntu/cloud_bridge/config_offloading"
+  command: ["/bin/bash", "-c"]
+  args:
+    [
+      "echo $ROBOT_NAME; export CLOUD_IP=192.168.1.2; . /opt/ros/$ROS_DISTRO/setup.bash; . /home/ubuntu/cloud_bridge/install/setup.bash; sed 's/microk8s_chatter/chatter2/g' /home/ubuntu/publisher.py > /home/ubuntu/cloud_bridge/publisher.py; ros2 launch cloud_bridge cloud_bridge_client.launch.py & python3 /home/ubuntu/cloud_bridge/publisher.py talker;",
+    ]
+  nodeSelector: "cloud-nuc11phi7"
